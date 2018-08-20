@@ -1,5 +1,4 @@
 import { h } from 'hyperapp';
-import Description from './Description';
 
 /**
  * first object in the store is 'state' (an object - {})
@@ -7,23 +6,14 @@ import Description from './Description';
  * here we destructure what is needed
  * 'num' from 'state' and 'add'/'sub' from 'actions'
  */
-export default ({ num }, { add, sub }) =>
-  <div class="counter">
-    <Description />
-    <section>
-      <button
-        class="sub"
-        onclick={sub}
-        disabled={num < 1}
-      >
-        -
-      </button>
-      <h1 class="count">{num}</h1>
-      <button
-        class="add"
-        onclick={add}
-      >
-        +
-      </button>
-    </section>
+export default ({ houseLevel }, { increaseLevel }) =>
+  <div>
+    <div>House</div>
+    <div>{ houseLevel }</div>
+    <button onclick={() => {
+      increaseLevel(1);
+    }}>+</button>
+    <button onclick={() => {
+      increaseLevel(10);
+    }}>++</button>
   </div>;

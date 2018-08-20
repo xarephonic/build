@@ -1,3 +1,4 @@
 export default {
-  num: 0,
+  money: 0,
+  houseLevel: 0
 };
