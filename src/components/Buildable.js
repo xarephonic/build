@@ -6,27 +6,31 @@ import { h } from 'hyperapp';
  * here we destructure what is needed
  * 'num' from 'state' and 'add'/'sub' from 'actions'
  */
-export default () => ({ buildings }, { updateLevel, updateMoney }) => {
+export default (building) => ( state , { updateLevel, updateMoney }) => {
 
   const {
+    name,
+    type,
     level,
     timer,
-    income
-  } = buildings.workshop;
+    income,
+    cost,
+    unlocked
+  } = building;
 
   return (
   <div>
-    <div>Workshop</div>
+    <div>{ name }</div>
     <div>{ level }</div>
     <div>{`Generating ${level * income} every ${timer/1000} seconds`}</div>
     <div>{`${level * income / (timer / 1000)} per second`}</div>
     <button onclick={() => {
-      updateLevel({ type: 'workshop', amount: 1});
-      updateMoney(-1);
+      updateLevel({ type, amount: 1});
+      updateMoney(cost * -1);
     }}>+</button>
     <button onclick={() => {
-      updateLevel({ type: 'workshop', amount: 10});
-      updateMoney(-10);
+      updateLevel({ type, amount: 10});
+      updateMoney(cost * -10);
     }}>++</button>
   </div>);
 }
