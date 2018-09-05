@@ -9,7 +9,33 @@ export default {
   	return updateObj;
   },
   updateMoney: value => state => ({ money: state.money + value }),
-  updateFood: value => state => ({ food: state.food + value}),
+  updateFood: value => state => ({ food: state.food + value }),
+  growFamilies: () => state => {
+    const updateObj = {};
+
+    if(state.timeStepAccrued % state.families.growthTimer === 0) {
+      const currentFamilies = state.families;
+      const houseLevel = state.buildings.find((building) => {
+        return building.type === 'house';
+      }).level;
+
+      if(currentFamilies.amount !== houseLevel) {
+        currentFamilies.amount += currentFamilies.growth
+      }
+      updateObj.families = currentFamilies;
+    }
+
+    return updateObj;
+  },
+  consumeFood: () => state => {
+    const updateObj = {};
+    if(state.timeStepAccrued % state.families.foodConsumptionTimer === 0) {
+      //we dont want food to go negative
+      updateObj.food = Math.max(0,state.food - state.families.amount * state.families.foodConsumption);
+    }
+
+    return updateObj;
+  },
   update: () => state => {
 
     const updateObj = {};

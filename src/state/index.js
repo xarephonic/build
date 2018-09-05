@@ -3,6 +3,13 @@ import actions from '../actions/index.js';
 export default {
   money: 0,
   food: 0,
+  families: {
+    amount: 1,
+    growth: 1,
+    growthTimer: 16000,
+    foodConsumption: 1,
+    foodConsumptionTimer: 4000
+  },
   buildings: [
     {
       name: 'House',
@@ -35,5 +42,5 @@ export default {
   ],
   timeStep: 500,
   timeStepAccrued: 0,
-  timeResetAmount: 10000
+  timeResetAmount: 100000
 };
