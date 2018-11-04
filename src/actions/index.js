@@ -10,6 +10,7 @@ export default {
   },
   updateMoney: value => state => ({ money: state.money + value }),
   updateFood: value => state => ({ food: state.food + value}),
+  updateInn: value => state => ({ innLevel: state.innLevel + value}),
   update: () => state => {
 
     const updateObj = {};

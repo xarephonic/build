@@ -33,6 +33,7 @@ export default {
       special: actions.updateFood
     }
   ],
+  innLevel: 0,
   timeStep: 500,
   timeStepAccrued: 0,
   timeResetAmount: 10000

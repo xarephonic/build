@@ -1,8 +1,8 @@
 import { h } from 'hyperapp';
 import Buildable from './Buildable.js';
+import Inn from './Inn.js';
 
-
-export default ( state, { updateMoney, increaseLevel, update }) => {
+export default ( state, { update }) => {
 	return (
 	<div
 		oncreate={() => {
@@ -18,5 +18,7 @@ export default ( state, { updateMoney, increaseLevel, update }) => {
 		{state.buildings.map((building) => {
 			return <Buildable {...building} />
 		})}
-	</div>);
+		<Inn />
+	</div>
+	);
 }
